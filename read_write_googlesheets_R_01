@@ -1,0 +1,36 @@
+##How to read and write to google sheets files from R
+
+##1. 
+install.packages("googlesheets4") ## step 1! Lets first download the required package. I have already installed so will just unpack instead. 
+
+##2.  
+library(googlesheets4)   ##now its loaded. 
+
+##3. 
+gs4_auth() ##next we need to authenticate. Done. Access token received and authorised. 
+
+
+## next we will read the dataframe from sheets into R. All we need is the URL of the sheet and use function read_sheet to read the DF
+
+##3.  #now, in order to read sheets file, all we need to use is the "read_sheet" function from the package and attached it to an object"
+df <- read_sheet("URL of Google Sheets Here") ##insert data
+
+
+##and thats it! We now have read the dataframe and stored it locally in our session. 
+
+
+###How to write to google sheets files from R ##next lets look at how we can write to google sheets from R.
+
+##1.
+library("dplyr") ##Lets now load dplyr package. We will need a function to write data to later   
+
+
+##2.
+ss = "SHEET ID (46 characthers in lenght, can be found in URL of sheet)" ##now, lets take this ID from the URL of the sheet and name it to an object 'SS'.
+##3. 
+data.frame(iris) %>% sheet_write(ss, sheet = 'flowers') 
+
+##now all we need to do is use function sheet_write and place SS in the first argument and the sheet title in the second. 
+
+
+### how easy was that? :) 
